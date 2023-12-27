@@ -570,7 +570,7 @@ const MOCK_JSON = {
 describe("traverser", () => {
     describe("findLocationOfText", () => {
         it("should find the location of text", () => {
-            const output = findLocationOfText(MOCK_JSON, "{{table_heading_1}}");
+            const output = findLocationOfText(MOCK_JSON, /{{table_heading_1}}/);
             expect(output).to.deep.equal([
                 {
                     index: 1,

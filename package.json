@@ -1,5 +1,5 @@
 {
-    "name": "docx",
+    "name": "@reyx/docx",
     "version": "8.4.0",
     "description": "Easily generate .docx files with JS/TS with a nice declarative API. Works for Node and on the Browser.",
     "type": "module",
@@ -39,7 +39,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dolanmiu/docx.git"
+        "url": "git+https://github.com/reyx/docx.git"
     },
     "keywords": [
         "docx",
