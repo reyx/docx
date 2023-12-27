@@ -1,21 +1,21 @@
 import JSZip from "jszip";
 import { Element, js2xml } from "xml-js";
 
-import { ConcreteHyperlink, ExternalHyperlink, ParagraphChild } from "@file/paragraph";
-import { FileChild } from "@file/file-child";
-import { IMediaData, Media } from "@file/media";
+import { ImageReplacer } from "@export/packer/image-replacer";
 import { IViewWrapper } from "@file/document-wrapper";
 import { File } from "@file/file";
-import { IContext } from "@file/xml-components";
-import { ImageReplacer } from "@export/packer/image-replacer";
+import { FileChild } from "@file/file-child";
+import { IMediaData, Media } from "@file/media";
+import { ConcreteHyperlink, ExternalHyperlink, ParagraphChild } from "@file/paragraph";
 import { TargetModeType } from "@file/relationships/relationship/relationship";
+import { IContext } from "@file/xml-components";
 import { uniqueId } from "@util/convenience-functions";
 
+import { appendContentType } from "./content-types-manager";
+import { appendRelationship, getNextRelationshipIndex } from "./relationship-manager";
 import { replacer } from "./replacer";
 import { findLocationOfText } from "./traverser";
 import { toJson } from "./util";
-import { appendRelationship, getNextRelationshipIndex } from "./relationship-manager";
-import { appendContentType } from "./content-types-manager";
 
 // eslint-disable-next-line functional/prefer-readonly-type
 type InputDataType = Buffer | string | number[] | Uint8Array | ArrayBuffer | Blob | NodeJS.ReadableStream;
@@ -50,6 +50,8 @@ export type IPatch = ParagraphPatch | FilePatch;
 export interface PatchDocumentOptions {
     readonly patches: { readonly [key: string]: IPatch };
     readonly keepOriginalStyles?: boolean;
+    readonly prefix?: string;
+    readonly suffix?: string;
 }
 
 const imageReplacer = new ImageReplacer();
@@ -105,8 +107,8 @@ export const patchDocument = async (data: InputDataType, options: PatchDocumentO
             contexts.set(key, context);
 
             for (const [patchKey, patchValue] of Object.entries(options.patches)) {
-                const patchText = `{{${patchKey}}}`;
-                const renderedParagraphs = findLocationOfText(json, patchText);
+                const patchText = `${options.prefix || "{{"}${patchKey}}}${options.suffix || "}}"}`;
+                const renderedParagraphs = findLocationOfText(json, new RegExp(patchText));
                 // TODO: mutates json. Make it immutable
                 replacer(
                     json,
@@ -224,6 +226,67 @@ export const patchDocument = async (data: InputDataType, options: PatchDocumentO
         mimeType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         compression: "DEFLATE",
     });
+};
+
+export const listPatches = async (data: InputDataType, options: PatchDocumentOptions): Promise<IterableIterator<string>> => {
+    const zipContent = await JSZip.loadAsync(data);
+    const contexts = new Map<string, IContext>();
+    const file = {
+        Media: new Media(),
+    } as unknown as File;
+
+    const map = new Map<string, string>();
+
+    // eslint-disable-next-line functional/prefer-readonly-type
+    const hyperlinkRelationshipAdditions: IHyperlinkRelationshipAddition[] = [];
+
+    const binaryContentMap = new Map<string, Uint8Array>();
+
+    for (const [key, value] of Object.entries(zipContent.files)) {
+        if (!key.endsWith(".xml") && !key.endsWith(".rels")) {
+            binaryContentMap.set(key, await value.async("uint8array"));
+            continue;
+        }
+
+        const json = toJson(await value.async("text"));
+        if (key.startsWith("word/") && !key.endsWith(".xml.rels")) {
+            const context: IContext = {
+                file,
+                viewWrapper: {
+                    Relationships: {
+                        createRelationship: (
+                            linkId: string,
+                            _: string,
+                            target: string,
+                            __: (typeof TargetModeType)[keyof typeof TargetModeType],
+                        ) => {
+                            // eslint-disable-next-line functional/immutable-data
+                            hyperlinkRelationshipAdditions.push({
+                                key,
+                                hyperlink: {
+                                    id: linkId,
+                                    link: target,
+                                },
+                            });
+                        },
+                    },
+                } as unknown as IViewWrapper,
+                stack: [],
+            };
+            contexts.set(key, context);
+
+            const regex = new RegExp(`${options.prefix || "{{"}([_.0-9a-zA-Z]*)${options.suffix || "}}"}`, "g");
+            const renderedParagraphs = findLocationOfText(json, regex).map((item) => item);
+            for (const paragraph of renderedParagraphs) {
+                const match = paragraph.text.match(regex);
+                if (match) {
+                    match.forEach((v) => map.set(v, v));
+                }
+            }
+        }
+    }
+
+    return map.keys();
 };
 
 const toXml = (jsonObj: Element): string => {
