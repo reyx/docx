@@ -16,15 +16,15 @@
                 const doc = docx
                     .patchDocument(document.getElementById("doc").files[0], {
                         patches: {
-                            emp_last_name: {
+                            emp_name: {
                                 type: docx.PatchType.PARAGRAPH,
-                                children: [new docx.TextRun("{{batata}}")],
+                                children: [new docx.TextRun("{{matter.name}}")],
                             },
                         },
-                        prefix: "\\${",
+                        prefix: "${",
                         suffix: "}",
                     })
-                    .then((doc) => saveAs(new Blob([doc]), "batata.docx"));
+                    .then((doc) => saveAs(new Blob([doc]), "sample.docx"));
             }
 
             function generate() {

@@ -1,14 +1,14 @@
-import { Element } from "xml-js";
 import xml from "xml";
+import { Element } from "xml-js";
 
 import { Formatter } from "@export/formatter";
 import { IContext, XmlComponent } from "@file/xml-components";
 
 import { IPatch, PatchType } from "./from-docx";
-import { toJson } from "./util";
-import { IRenderedParagraphNode } from "./run-renderer";
-import { replaceTokenInParagraphElement } from "./paragraph-token-replacer";
 import { findRunElementIndexWithToken, splitRunElement } from "./paragraph-split-inject";
+import { replaceTokenInParagraphElement } from "./paragraph-token-replacer";
+import { IRenderedParagraphNode } from "./run-renderer";
+import { toJson } from "./util";
 
 const formatter = new Formatter();
 

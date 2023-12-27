@@ -56,12 +56,19 @@ export interface PatchDocumentOptions {
 
 const imageReplacer = new ImageReplacer();
 
+const parseSuffixAndPrefix = (options: PatchDocumentOptions): readonly string[] => {
+    const prefix = options.prefix ? options.prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") : "{{";
+    const suffix = options.suffix ? options.suffix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") : "}}";
+    return [prefix, suffix];
+};
+
 export const patchDocument = async (data: InputDataType, options: PatchDocumentOptions): Promise<Uint8Array> => {
     const zipContent = await JSZip.loadAsync(data);
     const contexts = new Map<string, IContext>();
     const file = {
         Media: new Media(),
     } as unknown as File;
+    const [prefix, suffix] = parseSuffixAndPrefix(options);
 
     const map = new Map<string, Element>();
 
@@ -107,8 +114,9 @@ export const patchDocument = async (data: InputDataType, options: PatchDocumentO
             contexts.set(key, context);
 
             for (const [patchKey, patchValue] of Object.entries(options.patches)) {
+                const regex = new RegExp(`${prefix}${patchKey}${suffix}`, "g");
                 const patchText = `${options.prefix || "{{"}${patchKey}${options.suffix || "}}"}`;
-                const renderedParagraphs = findLocationOfText(json, new RegExp(patchText, "g"));
+                const renderedParagraphs = findLocationOfText(json, regex);
                 // TODO: mutates json. Make it immutable
                 replacer(
                     json,
@@ -234,6 +242,7 @@ export const listPatches = async (data: InputDataType, options: PatchDocumentOpt
     const file = {
         Media: new Media(),
     } as unknown as File;
+    const [prefix, suffix] = parseSuffixAndPrefix(options);
 
     const map = new Map<string, string>();
 
@@ -275,7 +284,7 @@ export const listPatches = async (data: InputDataType, options: PatchDocumentOpt
             };
             contexts.set(key, context);
 
-            const regex = new RegExp(`${options.prefix || "{{"}([_.0-9a-zA-Z]*)${options.suffix || "}}"}`, "g");
+            const regex = new RegExp(`${prefix}([_.0-9a-zA-Z]*)${suffix}`, "g");
             const renderedParagraphs = findLocationOfText(json, regex).map((item) => item);
             for (const paragraph of renderedParagraphs) {
                 const match = paragraph.text.match(regex);
