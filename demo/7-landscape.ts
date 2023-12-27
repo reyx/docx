@@ -1,7 +1,7 @@
 // Example of how to set the document to landscape
 
+import { Document, Packer, PageOrientation, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, PageOrientation, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

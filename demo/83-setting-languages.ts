@@ -1,7 +1,7 @@
 // Simple example to add text to a document
 
+import { Document, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     styles: {

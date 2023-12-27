@@ -1,7 +1,7 @@
 // Sections with multiple columns
 
+import { Document, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

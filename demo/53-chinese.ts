@@ -5,8 +5,8 @@
 
 // Note that if the OS have not install `KaiTi` font, this demo doesn't work.
 
+import { Document, HeadingLevel, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, HeadingLevel, Packer, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     styles: {

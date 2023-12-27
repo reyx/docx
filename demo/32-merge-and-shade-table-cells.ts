@@ -1,7 +1,6 @@
 // Example of how you would merge cells together (Rows and Columns) and apply shading
 // Also includes an example on how to center tables
 
-import * as fs from "fs";
 import {
     AlignmentType,
     BorderStyle,
@@ -15,7 +14,8 @@ import {
     TableCell,
     TableRow,
     WidthType,
-} from "docx";
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const table = new Table({
     rows: [

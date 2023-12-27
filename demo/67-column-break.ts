@@ -1,7 +1,7 @@
 // Section with 2 columns including a column break
 
+import { ColumnBreak, Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, ColumnBreak, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

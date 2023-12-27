@@ -1,7 +1,7 @@
 // Page numbers
 
+import { AlignmentType, Document, Footer, Header, Packer, PageBreak, PageNumber, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, Document, Footer, Header, Packer, PageBreak, PageNumber, Paragraph, TextRun } from "docx";
 
 // cspell: disable
 const createLoremIpsumParagraphs = () => [

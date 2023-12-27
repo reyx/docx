@@ -5,7 +5,7 @@
 You can add multiple `text runs` in `Paragraphs`. This is the most verbose way of writing a `Paragraph` but it is also the most flexible:
 
 ```ts
-import { Paragraph, TextRun } from "docx";
+import { Paragraph, TextRun } from "@reyx/docx";
 
 const paragraph = new Paragraph({
     children: [new TextRun("My awesome text here for my university dissertation"), new TextRun("Foo Bar")],

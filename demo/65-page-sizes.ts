@@ -1,8 +1,8 @@
 // Example of how to set the document page sizes
 // Reference from https://papersizes.io/a/a3
 
+import { convertMillimetersToTwip, Document, Packer, PageOrientation, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { convertMillimetersToTwip, Document, Packer, PageOrientation, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

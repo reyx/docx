@@ -1,7 +1,7 @@
 // Multiple sections with total number of pages in each section
 
+import { AlignmentType, Document, Footer, Header, NumberFormat, Packer, PageBreak, PageNumber, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, Document, Footer, Header, Packer, PageBreak, PageNumber, NumberFormat, Paragraph, TextRun } from "docx";
 
 const header = new Header({
     children: [

@@ -1,5 +1,5 @@
+import { Document, LevelFormat, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, LevelFormat } from "docx";
 
 const doc = new Document({
     numbering: {

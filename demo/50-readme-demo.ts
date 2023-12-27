@@ -1,7 +1,7 @@
 // The demo on the README.md
 
+import { Document, HeadingLevel, ImageRun, Packer, Paragraph, Table, TableCell, TableRow, VerticalAlign } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, HeadingLevel, ImageRun, Packer, Paragraph, Table, TableCell, TableRow, VerticalAlign } from "docx";
 
 const table = new Table({
     rows: [

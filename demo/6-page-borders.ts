@@ -1,7 +1,7 @@
 // Example of how to change page borders
 
+import { Document, HeadingLevel, Packer, Paragraph, Tab, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, HeadingLevel, Packer, Paragraph, Tab, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

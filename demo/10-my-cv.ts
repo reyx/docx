@@ -1,7 +1,7 @@
 // Generate a CV
 
+import { AlignmentType, Document, HeadingLevel, Packer, Paragraph, Tab, TabStopPosition, TabStopType, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, Document, HeadingLevel, Packer, Paragraph, Tab, TabStopPosition, TabStopType, TextRun } from "docx";
 
 // tslint:disable:no-shadowed-variable
 

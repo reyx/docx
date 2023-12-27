@@ -1,7 +1,7 @@
 // Generate a template document
 
+import { Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

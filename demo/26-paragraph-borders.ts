@@ -1,7 +1,7 @@
 // Creates two paragraphs, one with a border and one without
 
+import { BorderStyle, Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { BorderStyle, Document, Packer, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

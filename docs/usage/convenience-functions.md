@@ -7,7 +7,7 @@ More info here: https://en.wikipedia.org/wiki/Twip
 ## Convert Inches to Twip
 
 ```ts
-import { convertInchesToTwip } from "docx";
+import { convertInchesToTwip } from "@reyx/docx";
 
 const twip = convertInchesToTwip(1); // returns 1440
 const twip = convertInchesToTwip(0.5); // returns 720
@@ -16,7 +16,7 @@ const twip = convertInchesToTwip(0.5); // returns 720
 ## Convert Millimeters to Twip
 
 ```ts
-import { convertMillimetersToTwip } from "docx";
+import { convertMillimetersToTwip } from "@reyx/docx";
 
 const twip = convertMillimetersToTwip(50); // returns 2834
 ```

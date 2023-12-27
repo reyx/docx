@@ -1,7 +1,7 @@
 // Simple example to add comments to a document
 
+import { CommentRangeEnd, CommentRangeStart, CommentReference, Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, TextRun, CommentRangeStart, CommentRangeEnd, CommentReference } from "docx";
 
 const doc = new Document({
     comments: {

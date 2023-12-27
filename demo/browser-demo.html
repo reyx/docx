@@ -9,8 +9,24 @@
         <h1>DOCX browser Word document generation</h1>
 
         <button type="button" onclick="generate()">Click to generate document</button>
+        <input type="file" name="doc" id="doc" onchange="patcher()" />
 
         <script>
+            function patcher() {
+                const doc = docx
+                    .patchDocument(document.getElementById("doc").files[0], {
+                        patches: {
+                            emp_last_name: {
+                                type: docx.PatchType.PARAGRAPH,
+                                children: [new docx.TextRun("{{batata}}")],
+                            },
+                        },
+                        prefix: "\\${",
+                        suffix: "}",
+                    })
+                    .then((doc) => saveAs(new Blob([doc]), "batata.docx"));
+            }
+
             function generate() {
                 const doc = new docx.Document({
                     sections: [

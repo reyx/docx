@@ -1,6 +1,5 @@
 // Patch a document with patches
 
-import * as fs from "fs";
 import {
     ExternalHyperlink,
     HeadingLevel,
@@ -14,7 +13,8 @@ import {
     TextDirection,
     TextRun,
     VerticalAlign,
-} from "docx";
+} from "@reyx/docx";
+import * as fs from "fs";
 
 patchDocument(fs.readFileSync("demo/assets/simple-template.docx"), {
     patches: {

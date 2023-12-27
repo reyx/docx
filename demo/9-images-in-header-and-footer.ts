@@ -1,7 +1,7 @@
 // Add images to header and footer
 
+import { Document, Footer, Header, ImageRun, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Footer, Header, ImageRun, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

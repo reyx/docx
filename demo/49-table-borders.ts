@@ -1,6 +1,5 @@
 // Add custom borders and no-borders to the table itself
 
-import * as fs from "fs";
 import {
     BorderStyle,
     Document,
@@ -13,7 +12,8 @@ import {
     TableRow,
     TextDirection,
     VerticalAlign,
-} from "docx";
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const table = new Table({
     rows: [

@@ -1,16 +1,16 @@
 // Simple example apply positional tabs to a document
 
-import * as fs from "fs";
 import {
     Document,
     Packer,
     Paragraph,
     PositionalTab,
-    TextRun,
     PositionalTabAlignment,
-    PositionalTabRelativeTo,
     PositionalTabLeader,
-} from "docx";
+    PositionalTabRelativeTo,
+    TextRun,
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const doc = new Document({
     sections: [

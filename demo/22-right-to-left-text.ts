@@ -1,7 +1,7 @@
 // This demo shows right to left for special languages
 
+import { Document, Packer, Paragraph, Table, TableCell, TableRow, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, Table, TableCell, TableRow, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

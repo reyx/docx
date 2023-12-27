@@ -1,22 +1,22 @@
 // Setting styles with JavaScript configuration
 
-import * as fs from "fs";
 import {
     AlignmentType,
-    convertInchesToTwip,
     Document,
     Footer,
     HeadingLevel,
     ImageRun,
+    LevelFormat,
     Packer,
     Paragraph,
+    TabStopPosition,
     Table,
     TableCell,
     TableRow,
-    TabStopPosition,
     UnderlineType,
-    LevelFormat,
-} from "docx";
+    convertInchesToTwip,
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const table = new Table({
     rows: [

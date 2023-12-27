@@ -1,7 +1,7 @@
 // Scaling images
 
+import { Document, ImageRun, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, ImageRun, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

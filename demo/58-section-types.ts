@@ -1,7 +1,7 @@
 // Usage of different Section Types
 
+import { Document, Packer, Paragraph, SectionType, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, TextRun, SectionType } from "docx";
 
 const doc = new Document({
     sections: [

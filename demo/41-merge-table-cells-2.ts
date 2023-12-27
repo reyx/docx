@@ -1,7 +1,7 @@
 // Multiple cells merging in the same table - Rows and Columns
 
+import { Document, Packer, Paragraph, Table, TableCell, TableRow } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, Table, TableCell, TableRow } from "docx";
 
 const table = new Table({
     rows: [

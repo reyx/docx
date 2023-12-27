@@ -1,7 +1,7 @@
 // Simple example to add text to a document
 
+import { AlignmentType, convertMillimetersToTwip, Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, convertMillimetersToTwip, Document, Packer, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     styles: {

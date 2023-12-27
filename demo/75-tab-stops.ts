@@ -1,7 +1,7 @@
 // Example of using tab stops
 
+import { Document, HeadingLevel, Packer, Paragraph, TabStopPosition, TabStopType, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, HeadingLevel, Packer, Paragraph, TabStopPosition, TabStopType, TextRun } from "docx";
 
 const columnWidth = TabStopPosition.MAX / 4;
 const receiptTabStops = [

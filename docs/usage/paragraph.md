@@ -9,7 +9,7 @@ You can create `Paragraphs` in the following ways:
 ### Shorthand
 
 ```ts
-import { Paragraph } from "docx";
+import { Paragraph } from "@reyx/docx";
 
 const paragraph = new Paragraph("Short hand Hello World");
 ```
@@ -221,7 +221,7 @@ To create styles, please refer to the [styling documentation](usage/styling-with
 ### Headings and titles
 
 ```ts
-import { HeadingLevel, Paragraph } from "docx";
+import { HeadingLevel, Paragraph } from "@reyx/docx";
 
 const paragraph = new Paragraph({
     text: "Hello World",

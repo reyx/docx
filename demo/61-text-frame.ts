@@ -1,6 +1,5 @@
 // Text Frame (Text Box) example
 
-import * as fs from "fs";
 import {
     BorderStyle,
     Document,
@@ -11,7 +10,8 @@ import {
     Tab,
     TextRun,
     VerticalPositionAlign,
-} from "docx";
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const doc = new Document({
     sections: [

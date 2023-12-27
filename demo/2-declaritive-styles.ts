@@ -1,7 +1,7 @@
 // Example on how to customize the look at feel using Styles
 
+import { AlignmentType, convertInchesToTwip, Document, HeadingLevel, LevelFormat, Packer, Paragraph, TextRun, UnderlineType } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, convertInchesToTwip, Document, HeadingLevel, LevelFormat, Packer, Paragraph, TextRun, UnderlineType } from "docx";
 
 const doc = new Document({
     creator: "Clippy",

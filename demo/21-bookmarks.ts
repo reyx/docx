@@ -1,7 +1,7 @@
 // This demo shows how to create bookmarks then link to them with internal hyperlinks
 
+import { Bookmark, Document, Footer, HeadingLevel, InternalHyperlink, Packer, PageBreak, PageReference, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Bookmark, Document, Footer, HeadingLevel, InternalHyperlink, Packer, PageBreak, Paragraph, TextRun, PageReference } from "docx";
 
 const LOREM_IPSUM =
     /* cspell:disable-next-line */

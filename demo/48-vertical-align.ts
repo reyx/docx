@@ -1,7 +1,7 @@
 // Example of making content of section vertically aligned
 
+import { Document, Packer, Paragraph, Tab, TextRun, VerticalAlign } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, VerticalAlign, TextRun, Tab } from "docx";
 
 const doc = new Document({
     sections: [

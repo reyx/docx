@@ -1,7 +1,7 @@
 // Highlighting text
 
+import { AlignmentType, Document, Header, Packer, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, Document, Header, Packer, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

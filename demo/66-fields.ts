@@ -1,7 +1,7 @@
 // Use fields to include dynamic text
 
+import { Bookmark, Document, Packer, Paragraph, SimpleField, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Bookmark, Document, Packer, Paragraph, SimpleField, TextRun } from "docx";
 
 const doc = new Document({
     creator: "Me",

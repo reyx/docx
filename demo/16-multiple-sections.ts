@@ -1,7 +1,7 @@
 // Multiple sections and headers
 
+import { Document, Footer, Header, NumberFormat, Packer, PageNumber, PageOrientation, Paragraph, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Footer, Header, Packer, PageNumber, NumberFormat, PageOrientation, Paragraph, TextRun } from "docx";
 
 const doc = new Document({
     sections: [

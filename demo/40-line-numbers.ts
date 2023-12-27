@@ -1,7 +1,7 @@
 // Example demonstrating line numbers.
 
+import { Document, HeadingLevel, LineNumberRestartFormat, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, HeadingLevel, LineNumberRestartFormat, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     sections: [

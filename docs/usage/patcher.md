@@ -10,7 +10,7 @@ The patcher allows you to modify existing documents, and add new content to them
 
 ```ts
 import * as fs from "fs";
-import { patchDocument } from "docx";
+import { patchDocument } from "@reyx/docx";
 
 patchDocument(fs.readFileSync("My Document.docx"), {
     patches: {

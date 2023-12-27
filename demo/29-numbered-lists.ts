@@ -1,8 +1,8 @@
 // Numbered lists
 // The lists can also be restarted by specifying the instance number
 
+import { AlignmentType, convertInchesToTwip, Document, HeadingLevel, LevelFormat, Packer, Paragraph } from "@reyx/docx";
 import * as fs from "fs";
-import { AlignmentType, convertInchesToTwip, Document, HeadingLevel, LevelFormat, Packer, Paragraph } from "docx";
 
 const doc = new Document({
     numbering: {

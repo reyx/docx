@@ -13,16 +13,16 @@ const docx = require("docx");
 ```
 
 ```ts
-import * as docx from "docx";
+import * as docx from "@reyx/docx";
 // or
-import { ... } from "docx";
+import { ... } from "@reyx/docx";
 ```
 
 ## Basic Usage
 
 ```ts
 import * as fs from "fs";
-import { Document, Packer, Paragraph, TextRun } from "docx";
+import { Document, Packer, Paragraph, TextRun } from "@reyx/docx";
 
 // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
 // This simple example will only contain one section

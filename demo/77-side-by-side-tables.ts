@@ -1,7 +1,7 @@
 // Exporting the document as a stream
 
+import { Document, Packer, Paragraph, Table, TableBorders, TableCell, TableRow, WidthType } from "@reyx/docx";
 import * as fs from "fs";
-import { Document, Packer, Paragraph, Table, TableBorders, TableCell, TableRow, WidthType } from "docx";
 
 const table1 = new Table({
     columnWidths: [3505, 5505],

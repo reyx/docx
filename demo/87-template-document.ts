@@ -1,7 +1,7 @@
 // Patch a document with patches
 
+import { patchDocument, PatchType, TextRun } from "@reyx/docx";
 import * as fs from "fs";
-import { patchDocument, PatchType, TextRun } from "docx";
 
 patchDocument(fs.readFileSync("demo/assets/simple-template-2.docx"), {
     patches: {

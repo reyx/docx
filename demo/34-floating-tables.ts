@@ -1,6 +1,5 @@
 // Example of how you would create a table with float positions
 
-import * as fs from "fs";
 import {
     Document,
     OverlapType,
@@ -14,7 +13,8 @@ import {
     TableLayoutType,
     TableRow,
     WidthType,
-} from "docx";
+} from "@reyx/docx";
+import * as fs from "fs";
 
 const table = new Table({
     rows: [
