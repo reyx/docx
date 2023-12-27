@@ -107,7 +107,7 @@ export const patchDocument = async (data: InputDataType, options: PatchDocumentO
             contexts.set(key, context);
 
             for (const [patchKey, patchValue] of Object.entries(options.patches)) {
-                const patchText = `${options.prefix || "{{"}${patchKey}}}${options.suffix || "}}"}`;
+                const patchText = `${options.prefix || "{{"}${patchKey}${options.suffix || "}}"}`;
                 const renderedParagraphs = findLocationOfText(json, new RegExp(patchText));
                 // TODO: mutates json. Make it immutable
                 replacer(
