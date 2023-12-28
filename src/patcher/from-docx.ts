@@ -57,8 +57,9 @@ export interface PatchDocumentOptions {
 const imageReplacer = new ImageReplacer();
 
 const parseSuffixAndPrefix = (options: PatchDocumentOptions): readonly string[] => {
-    const prefix = options.prefix ? options.prefix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") : "{{";
-    const suffix = options.suffix ? options.suffix.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") : "}}";
+    const regex = /[-[\]{}()*+?.,\\^$|#\s]/g;
+    const prefix = options.prefix ? options.prefix.replace(regex, "\\$&") : "{{";
+    const suffix = options.suffix ? options.suffix.replace(regex, "\\$&") : "}}";
     return [prefix, suffix];
 };
 
@@ -285,7 +286,9 @@ export const listPatches = async (data: InputDataType, options: PatchDocumentOpt
             contexts.set(key, context);
 
             const regex = new RegExp(`${prefix}([_.0-9a-zA-Z]*)${suffix}`, "g");
+
             const renderedParagraphs = findLocationOfText(json, regex).map((item) => item);
+
             for (const paragraph of renderedParagraphs) {
                 const match = paragraph.text.match(regex);
                 if (match) {

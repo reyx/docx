@@ -41,5 +41,8 @@ export const findLocationOfText = (node: Element, regex: RegExp): readonly IRend
         }
     }
 
-    return renderedParagraphs.filter((p) => regex.test(p.text));
+    return renderedParagraphs.filter((p) => {
+        const match = p.text.match(regex);
+        return match && match.length !== 0;
+    });
 };
